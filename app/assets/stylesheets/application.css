@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+
+.button {
+  font-size: 24px;
+}
+
+.instructions, .survey {
+  text-align: center;
+  margin: auto;
+  max-width: 1200px;
+}
+
+.example-inputs {
+  color: blue;
+  font-size: 24px;
+  text-align: center;
+}
+
+#notice {
+  text-align: center;
+}
+
+.number {
+  color: blue;
+  font-size: 24px;
+  text-align: center;
+  width: 55px;
+}
+
+.sentence_display, .equation_display {
+  color: blue;
+  font-size: 24px;
+  text-align: center;
+  width: 470px;
+}
+
+.equation, .memory, .recall, .sentence, .veracity {
+    display: none;
+  }
+}
+
+button {
+  font-size: 24px;
+}
+
+h1 {
+  text-align: center;
+}
+
+form input[type='number']::-webkit-outer-spin-button,
+form input[type='number']::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}

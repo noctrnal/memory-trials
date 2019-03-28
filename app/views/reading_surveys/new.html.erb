@@ -1,0 +1,34 @@
+<h1>MSU Reading Trial</h1>
+
+<div class="survey">
+<%= form_with model: @reading_survey do |survey_form| %>
+  <%= survey_form.hidden_field :span, value: @span %>
+  <%= survey_form.fields_for :reading_questions do |question_form| %>
+    <div class="questions">
+      <p class="memory">
+        <%= question_form.number_field :memory, class: 'number', :readonly => true %>
+      </p>
+      <%= question_form.fields_for :sentence do |equation_form| %>
+        <p class="sentence">
+          <%= equation_form.text_field :sentence, class: 'sentence_display',  :readonly => true %>
+        </p>
+      <% end %>
+      <p class="veracity">
+        <%= question_form.radio_button :veracity, true %>
+        <%= question_form.label :veracity, "True" %>
+        <br>
+        <%= question_form.radio_button :veracity, false %>
+        <%= question_form.label :veracity, "False" %>
+        <br><br>
+        <button class="veracity-button">Submit</button>
+      </p>
+      <p class="recall">
+        Number <%= question_form.options[:child_index]+1 %>:
+        <%= question_form.number_field :recall, class: 'number' %>
+        <br><br>
+        <button class="recall-button">Submit</button>
+      </p>
+    </div>
+  <% end %>
+<% end %>
+</div>

@@ -1,19 +1,19 @@
-class OperationalQuestion < ApplicationRecord
-  belongs_to :operational_survey
-  belongs_to :equation
+class ReadingQuestion < ApplicationRecord
+  belongs_to :reading_survey
+  belongs_to :sentence
 
-  accepts_nested_attributes_for :equation
+  accepts_nested_attributes_for :sentence
 
   after_initialize :default_values
 
   private
     def default_values
       self.memory ||= memory_range
-      self.equation ||= fetch_equation
+      self.sentence ||= fetch_sentence
     end
 
-    def fetch_equation
-      Equation.offset(rand(Equation.count)).first
+    def fetch_sentence
+      Sentence.offset(rand(Sentence.count)).first
     end
 
     def memory_range

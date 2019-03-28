@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reading_survey: one
+  memory: 1
+  recall: 1
+  veracity: false
+  sentence: one
+
+two:
+  reading_survey: two
+  memory: 1
+  recall: 1
+  veracity: false
+  sentence: two

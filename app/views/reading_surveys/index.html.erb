@@ -1,0 +1,38 @@
+<h1>MSU Reading Trial</h1>
+
+<div class="instructions">
+<% if @initial %>
+  <h2>Instructions</h2>
+
+  <p>This is the Reading Span task. This task measures your ability to remember information while engaging in a separate task. Each trial is made up of a presentation phase and a recall phase.</p>
+
+  <h3>Presentation Phase</h3>
+
+  <p>You will be shown a number from <%= Setting.first.minimum_value %>-<%= Setting.first.maximum_value %> (see example 1). The number will appear for <%= Setting.first.delay %> second before being replaced with a sentence (see example 2). You need to decide if the sentence makes sense or is nonsense.</p>
+
+  <h4>Example 1:</h4>
+
+  <p class="example-inputs">64</p>
+
+  <h4>Example 2:</h4>
+
+  <p class="example-inputs">Ducks wear tennis shoes.</p>
+
+  <p>Clearly the answer here would be nonsense. Ducks (in general) do not wear shoes!</p>
+
+  <h3>Recall Phase</h3>
+
+  <p>After all of the number/sentence trials have been presented, you will see the screen in Example 3 for each of the numbers that were presented for you to remember (from 2–7 numbers). For example, if you were presented with three numbers (followed by three sentences), you will see three of these screens.</p>
+
+  <h4>Example 3:</h3>
+
+  <p class="example-inputs">Number 1:</p>
+
+  <p>You should type in the number you remember being presented first in the box and click the SUBMIT button. You should report the numbers in the same order that they were presented.</p>
+
+  <%= button_to 'Begin Trial', new_reading_survey_path, method: :get, class: 'button' %>
+<% else %>
+  <p>Good job! Keep trying your best to remember the numbers while doing evaluating sentences task as accurately as possible! Here is the next trial.</p>
+  <%= button_to 'Continue Trial', new_reading_survey_path, method: :get, class: 'button' %>
+<% end %>
+</div>

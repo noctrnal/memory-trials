@@ -1,3 +1,3 @@
 class Equation < ApplicationRecord
-  has_many :memory_questions
+  has_many :operational_questions
 end

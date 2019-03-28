@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_013755) do
+ActiveRecord::Schema.define(version: 2019_03_28_184039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "drawings", force: :cascade do |t|
+    t.text "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "equations", force: :cascade do |t|
     t.text "equation"
@@ -40,6 +46,26 @@ ActiveRecord::Schema.define(version: 2019_03_28_013755) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_operational_surveys_on_survey_id"
+  end
+
+  create_table "reading_questions", force: :cascade do |t|
+    t.bigint "reading_survey_id"
+    t.integer "memory"
+    t.integer "recall"
+    t.boolean "veracity"
+    t.bigint "sentence_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reading_survey_id"], name: "index_reading_questions_on_reading_survey_id"
+    t.index ["sentence_id"], name: "index_reading_questions_on_sentence_id"
+  end
+
+  create_table "reading_surveys", force: :cascade do |t|
+    t.bigint "survey_id"
+    t.integer "span"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["survey_id"], name: "index_reading_surveys_on_survey_id"
   end
 
   create_table "sentences", force: :cascade do |t|
@@ -70,4 +96,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_013755) do
   add_foreign_key "operational_questions", "equations"
   add_foreign_key "operational_questions", "operational_surveys"
   add_foreign_key "operational_surveys", "surveys"
+  add_foreign_key "reading_questions", "reading_surveys"
+  add_foreign_key "reading_questions", "sentences"
+  add_foreign_key "reading_surveys", "surveys"
 end

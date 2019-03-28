@@ -27,7 +27,8 @@ class SurveysController < ApplicationController
     unless @trial.blank?
       redirect_to controller: "#{@trial}_surveys", action: 'index'
     else
-      redirect_to controller: 'survey', action: 'success'
+      @survey.touch
+      redirect_to controller: 'drawings', action: 'new'
     end
   end
 
@@ -38,9 +39,9 @@ class SurveysController < ApplicationController
       if @survey.operational_instructions
         trials << 'operational'
       end
-      # if @survey.reading_instructions
-      #   trials << 'reading'
-      # end
+      if @survey.reading_instructions
+        trials << 'reading'
+      end
 
       trials.sample
     end

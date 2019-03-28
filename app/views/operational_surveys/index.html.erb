@@ -1,38 +1,38 @@
 <h1>MSU Operational Trial</h1>
 
+<div class="instructions">
 <% if @initial %>
-  <div class="instructions">
-    <h2>Instructions</h2>
+  <h2>Instructions</h2>
 
-    <p>This is the Operation Span task. This test measures your ability to remember information while engaging with a separate task. Each trial is made up of a presentation phase and a recall phase.</p>
+  <p>This is the Operation Span task. This test measures your ability to remember information while engaging with a separate task. Each trial is made up of a presentation phase and a recall phase.</p>
 
-    <h3>Presentation Phase</h3>
+  <h3>Presentation Phase</h3>
 
-    <p>You will be shown a number (it can be any number from <%= @setting.minimum_value %>-<%= @setting.maximum_value %>) (see example 1). The number will appear for <%= @setting.delay %> second before being replaced with a simple equation (see example 2). You need to say if the equation is true or false.</p>
+  <p>You will be shown a number (it can be any number from <%= @setting.minimum_value %>-<%= @setting.maximum_value %>) (see example 1). The number will appear for <%= @setting.delay %> second before being replaced with a simple equation (see example 2). You need to say if the equation is true or false.</p>
 
-    <h4>Example 1:</h4>
+  <h4>Example 1:</h4>
 
-    <p class="example-inputs">64</p>
+  <p class="example-inputs">64</p>
 
-    <h4>Example 2:</h4>
+  <h4>Example 2:</h4>
 
-    <p class="example-inputs">9 + 9 = 27</p>
+  <p class="example-inputs">9 + 9 = 27</p>
 
-    <p>For every number you are presented, an equation will follow. It is just as important to judge the equations correctly as it is to remember the numbers. If you remember the numbers but get the equation wrong, you will fail that trial.</p>
+  <p>For every number you are presented, an equation will follow. It is just as important to judge the equations correctly as it is to remember the numbers. If you remember the numbers but get the equation wrong, you will fail that trial.</p>
 
-    <h3>Recall Phase</h3>
+  <h3>Recall Phase</h3>
 
-    <p>You will see the screen in Example 3 for each of the numbers that were presented for you to remember (from 2–7 numbers). For example, if you were presented with three numbers (followed by three equations), you will see three of these screens.</p>
+  <p>You will see the screen in Example 3 for each of the numbers that were presented for you to remember (from 2–7 numbers). For example, if you were presented with three numbers (followed by three equations), you will see three of these screens.</p>
 
-    <h4>Example 3:</h3>
+  <h4>Example 3:</h3>
 
-    <p class="example-inputs">Number 1:</p>
+  <p class="example-inputs">Number 1:</p>
 
-    <p>You should type in the number you remember being presented first in the box and click the SUBMIT button. You should report the numbers in the same order that they were presented.</p>
-  </div>
+  <p>You should type in the number you remember being presented first in the box and click the SUBMIT button. You should report the numbers in the same order that they were presented.</p>
 
-  <%= button_to 'Begin Trial', new_operational_survey_path, method: :get %>
+  <%= button_to 'Begin Trial', new_operational_survey_path, method: :get, class: 'button' %>
 <% else %>
   <p>Good job! Keep trying your best to remember the numbers while doing the math task as accurately as possible! Here is the next trial.</p>
-  <%= button_to 'Continue Trial', new_operational_survey_path, method: :get %>
+  <%= button_to 'Continue Trial', new_operational_survey_path, method: :get, class: 'button' %>
 <% end %>
+</div>
