@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subject: 1
+  initial_instructions: false
+  operational_instructions: false
+  reading_instructions: false
+
+two:
+  subject: 1
+  initial_instructions: false
+  operational_instructions: false
+  reading_instructions: false

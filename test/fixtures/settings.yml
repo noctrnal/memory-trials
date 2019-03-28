@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delay: 1
+  maximum_value: 1
+  minimum_value: 1
+  surveys: 1
+
+two:
+  delay: 1
+  maximum_value: 1
+  minimum_value: 1
+  surveys: 1
