@@ -49,8 +49,7 @@
 }
 
 .equation, .memory, .recall, .sentence, .veracity {
-    display: none;
-  }
+  display: none;
 }
 
 button {
