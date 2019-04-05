@@ -15,7 +15,7 @@ class DrawingsController < ApplicationController
 
     respond_to do |format|
       if @drawing.save
-        format.html { redirect_to 'http://www.msstate.edu' }
+        format.html { redirect_to 'https://www.ise.msstate.edu' }
       else
         puts 'not saved!'
         format.html { render :new }
