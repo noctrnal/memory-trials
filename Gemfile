@@ -63,6 +63,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_admin', '~> 1.3'
 gem 'jquery-rails'
-
-# https://github.com/spacewander/rails-bootstrap-progressbar
-# gem 'bootstrap_progressbar'
