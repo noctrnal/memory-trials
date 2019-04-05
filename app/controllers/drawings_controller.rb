@@ -4,7 +4,14 @@ class DrawingsController < ApplicationController
   end
 
   def create
+    subject = session[:subject]
+
+    if subject.nil?
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
+    end
+
     @drawing = Drawing.new(drawing_params)
+    @drawing.subject = subject
 
     respond_to do |format|
       if @drawing.save
