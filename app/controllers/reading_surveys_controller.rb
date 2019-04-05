@@ -3,14 +3,19 @@ class ReadingSurveysController < ApplicationController
   before_action :set_survey, only: [:index, :new, :create]
 
   def index
-    possible_spans = reading_spans
+    @possible_spans = reading_spans
 
-    if possible_spans.empty?
+    if @possible_spans.empty?
       redirect_to controller: 'surveys', action: 'new'
     end
 
     @initial = @survey.reading_instructions
     @setting = Setting.first
+
+    @radius = 90.0
+    @surveys = ReadingSurvey.where(:survey => @survey.id).count
+    @percentage = (@surveys.to_f / (6 * @setting.surveys) * 100).round(0)
+    @offset = (100.0 - @percentage) / 100 * Math::PI * @radius * 2
   end
 
   def new
