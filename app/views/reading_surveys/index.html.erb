@@ -32,15 +32,16 @@
 
   <%= button_to 'Begin Trial', new_reading_survey_path, method: :get, class: 'button' %>
 <% else %>
+  <h2>Progress: <%= @surveys %> of <%= @setting.surveys * 12 %></h2>
   <div id="gauge" data-pct="<%= @percentage %>">
     <svg id="svg" width="200" height="200" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <circle r="<%= @radius %>" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48"
         stroke-dashoffset="0"></circle>
       <circle id="bar" r="90" cx="100" cy="100" fill="transparent" stroke-dasharray="565.48"
         style="stroke-dashoffset: <%= @offset %>;"></circle>
+      <text x="50%" y="65%" text-anchor="middle" stroke-width="2px" dy=".3em">Complete</text>
     </svg>
   </div>
-  <%= @surveys %> of <%= @setting.surveys * 6 %>
   <p>Good job! Keep trying your best to remember the numbers while doing evaluating sentences task as accurately as possible! Here is the next trial.</p>
   <%= button_to 'Continue Trial', new_reading_survey_path, method: :get, class: 'button' %>
 <% end %>

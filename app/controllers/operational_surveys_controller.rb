@@ -14,8 +14,10 @@ class OperationalSurveysController < ApplicationController
     @setting = Setting.first
 
     @radius = 90.0
-    @surveys = OperationalSurvey.where(:survey => @survey.id).count
-    @percentage = (@surveys.to_f / (6 * @setting.surveys) * 100).round(0)
+    operational_surveys = OperationalSurvey.where(:survey => @survey.id).count
+    reading_surveys = ReadingSurvey.where(:survey => @survey.id).count
+    @surveys = operational_surveys + reading_surveys
+    @percentage = (@surveys.to_f / (12 * @setting.surveys) * 100).round(0)
     @offset = (100.0 - @percentage) / 100 * Math::PI * @radius * 2
   end
 
