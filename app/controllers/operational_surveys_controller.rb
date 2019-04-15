@@ -86,6 +86,10 @@ class OperationalSurveysController < ApplicationController
     def set_equations
       @equations = session[:equations]
 
+      unless @equations
+        @equations = []
+      end
+
       unless @equations.any?
         @equations = []
       end
