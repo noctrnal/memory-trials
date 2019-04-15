@@ -1,4 +1,5 @@
 class ReadingSurveysController < ApplicationController
+  before_action :set_sentences, only: [:new]
   before_action :set_subject, only: [:index, :new, :create]
   before_action :set_survey, only: [:index, :new, :create]
 
@@ -23,8 +24,13 @@ class ReadingSurveysController < ApplicationController
     @span = reading_spans.sample
 
     @span.to_i.times do
-      @reading_survey.reading_questions.build
+      unused_sentences = Sentence.where.not(:id => @sentences)
+      sentence = unused_sentences.sample
+      @reading_survey.reading_questions.build(:sentence => sentence)
+      @sentences << @reading_survey.reading_questions.last.sentence.id
     end
+
+    session[:sentences] = @sentences
   end
 
   def create
@@ -73,6 +79,18 @@ class ReadingSurveysController < ApplicationController
           :_destroy,
         ],
       )
+    end
+
+    def set_sentences
+      @sentences = session[:sentences]
+
+      unless @sentences
+        @sentences = []
+      end
+
+      unless @sentences.any?
+          @sentences = []
+      end
     end
 
     def set_subject

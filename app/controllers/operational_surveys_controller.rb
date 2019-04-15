@@ -1,4 +1,5 @@
 class OperationalSurveysController < ApplicationController
+  before_action :set_equations, only: [:new]
   before_action :set_subject, only: [:index, :new, :create]
   before_action :set_survey, only: [:index, :new, :create]
 
@@ -23,8 +24,13 @@ class OperationalSurveysController < ApplicationController
     @span = operational_spans.sample
 
     @span.to_i.times do
-      @operational_survey.operational_questions.build
+      unused_equations = Equation.where.not(:id => @equations)
+      equation = unused_equations.sample
+      @operational_survey.operational_questions.build(:equation => equation)
+      @equations << @operational_survey.operational_questions.last.equation.id
     end
+
+    session[:equations] = @equations
   end
 
   def create
@@ -73,6 +79,14 @@ class OperationalSurveysController < ApplicationController
           :_destroy,
         ],
       )
+    end
+
+    def set_equations
+      @equations = session[:equations]
+
+      unless @equations.any?
+        @equations = []
+      end
     end
 
     def set_subject
