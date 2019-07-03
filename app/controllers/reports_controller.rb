@@ -1,8 +1,7 @@
 class ReportsController < ApplicationController
   def index
-    @surveys = Survey.all
-
-    @surveys.each do |survey|
+    respond_to do |format|
+      format.csv { send_data Survey.to_csv }
     end
   end
 end
